@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            outline: none;
+        }
+        .search {
+            width: 300px;
+            height: 30px;
+            background-color: pink;
+            margin: 100px auto;
+        }
+        #txt {
+            width: 240px;
+            height: 26px;
+            float: left;
+            color: #c0c0c0;
+            padding-left: 6px;
+        }
+        #btn {
+            width: 50px;
+            height: 30px;
+            float: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="search">
+        <input type="text" id="txt" value="请输入..."/>
+        <button id="btn">搜索</button>
+    </div>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        var txt = $id("txt");
+        var btn = $id("btn");
+//        点击输入框获取焦点
+        txt.onfocus = function () {
+            if(txt.value == "请输入..."){
+                txt.value = '';
+            }
+        }
+//        点击其他地方就是失去焦点
+        txt.onblur = function () {
+            if(txt.value == '')
+            txt.value = "请输入...";
+        }
+    </script>
+</body>
+</html>

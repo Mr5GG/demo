@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration:none
+        }
+        .box {
+            width: 350px;
+            height: 225px;
+            border: 1px solid #c0c0c0;
+            margin: 100px auto;
+            position: relative;
+        }
+        .top {
+            padding: 12px 0px 0px 20px;
+
+        }
+        .top-title {
+            font-size: 16px;
+            font-weight: 700;
+            color: #5773C0;
+        }
+        #icon {
+            width: 50px;
+            height: 50px;
+            margin-top: 15px;
+            background: url("images/astroIcon.png") no-repeat;
+        }
+        .top-right {
+            position: absolute;
+            top: 45px;
+            left: 100px;
+        }
+        .yunshi {
+            margin-top: 10px;
+        }
+        #yunshi {
+            width: 80px;
+            height: 13px;
+            position: absolute;
+            top: 36px;
+            left: 80px;
+            background-image: url("images/yunshi.png");
+        }
+        #star {
+            width: 40px;
+            height: 13px;
+            position: absolute;
+            top: 36px;
+            left: 80px;
+            background: url("images/yunshi.png") 0px -27px no-repeat;
+        }
+        .bottom {
+            padding: 15px 20px 0px 20px;
+            line-height: 30px;
+        }
+        </style>
+</head>
+<body>
+    <div class="box">
+        <div class="top">
+            <span class="top-title">星座运势</span>
+            <div class="top-left-icon" id="icon"></div>
+            <div class="top-right">
+                <select name="" id="sele-xingzuo">
+                    <option value="0">白羊座(04.21-05.20)</option>
+                    <option value="1">金牛座(04.21-05.20)</option>
+                    <option value="2">双子座(05.21-06.20)</option>
+                    <option value="3">巨蟹座(06.22-07.22)</option>
+                    <option value="4">狮子座(07.21-08.21)</option>
+                    <option value="5">处女座(08.21-09.21)</option>
+                    <option value="6">天平座(09.21-10.21)</option>
+                    <option value="7">天蝎座(10.22-11.22)</option>
+                    <option value="8">射手座(11.22-12.22)</option>
+                    <option value="9">魔蝎座(12.22-01.22)</option>
+                    <option value="10">水平座(01.22-02.22)</option>
+                    <option value="11">双鱼座(02.22-03.22)</option>
+                </select>
+                <div class="yunshi">今日运势：
+                    <span id="yunshi"></span>
+                    <span id="star"></span>
+                </div>
+            </div>
+        </div>
+        <div class="bottom" id="content">
+            今天是一个非常有利白羊的日子，可以跟人多沟通交流，会有很多人际的助力，各类事务会顺利，可以...[详细]
+        </div>
+    </div>
+</body>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        //幸运指数
+        var starArr = [9,6,7,8.5,6,8,9,7,5,6.5,4,8];
+        var textArr = ["今天是一个非常有利白羊的日子，可以跟人多沟通交流，会有很多人际的助力，各类事务会顺利，可以...详细","今天的金牛在工作上要控制自己的脾气，对家人要有耐心坦诚相待。部分金牛在金钱上的收支比较大...详细","今天双子的财运不错，会真诚的与朋友相处。部分双子要控制好自己情绪就能有更大的收获...详细","说话言语,今日财运容易波动，股票不问，财收相对差一点，肠胃或者心脏可能有点不舒服，不要随便发脾气，有...详细","今天狮子的异性缘非常好，注意不要和亲密的朋友争吵，已婚者要防止第三者的介入，头脑保持灵光，...详细","今天的你身心都感觉非常的疲惫，全身酸痛，身体状态不佳，容易有摔伤，扭伤，也可能会出现一些炎...详细","今天的天秤脾气不太稳定，很容易得罪朋友，学会平心静气的与人沟通。部分天秤会因为子女的教育问...详细","今天的天蝎情绪不稳定，和领导相处时容易出差错，和家人相处时候注意控制脾气。部分天蝎要注意身...详细","今天的射手内心平静，对一些宗教、神秘体验论开始深深着迷。部分射手出行要注意安全，另一半容易...详细","这是适合静心冥想的一天，放松心情，清理身体中的毒素，负面情绪，释放掉内在的伤痛，失落、难过...详细","今天你在工作上可能会有小人出现，因为你的淡定，这个小人反而会让你获得其他好处。部分水瓶对自...详细","今天的你会因为感情的是让苦恼头疼，自己的付出对方并不理解，而且还一直挑剔你。在工作中也闷闷...[详细]"];
+        $id("star").style.width = starArr[0] * 8 + "px";
+        $id("sele-xingzuo").onchange = function () {
+//            alert(this.value);
+            if(this.value == "0"){
+            }else{
+                $id("icon").style.backgroundPosition = "0px 0px";
+                $id("icon").style.backgroundPosition = "0"+(-50*this.value)+"px";
+            }
+            $id("star").style.width = starArr[this.value] * 8 + "px";
+            $id("content").innerHTML = textArr[this.value];
+        }
+    </script>
+</html>

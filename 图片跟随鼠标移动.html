@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #image {
+            width: 88px;
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/hugefly.jpg" alt="" id="image">
+<script>
+    var image = document.getElementById("image");
+    document.onmousemove = function(event){
+        var ev = event || window.event;
+        targetX = ev.clientX - (image.offsetWidth/2);
+        targetY = ev.clientY - (image.offsetHeight/2);
+
+    }
+    // 缓动公式
+    var leaderX = 0;
+    var leaderY = 0;
+    var targetX = 0;
+    var targetY = 0;
+    setInterval(function () {
+        leaderX = leaderX + (targetX - leaderX)/10;
+        leaderY = leaderY + (targetY - leaderY)/10;
+        image.style.left = leaderX + "px";
+        image.style.top = leaderY + "px";
+    },10)
+</script>
+</body>
+</html>

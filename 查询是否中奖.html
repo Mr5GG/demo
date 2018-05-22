@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #txt {
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="txt" value="请输入您的中奖号码">
+    <button id="btn">查询</button>
+    <script>
+        function $id(id) {
+            return document.getElementById(id);
+        }
+        var txt = $id("txt");
+        var btn = $id("btn");
+        txt.onfocus = function () {
+            txt.value = '';
+        }
+        btn.onclick = function () {
+            if(txt.value ==="88"){
+                alert('恭喜您中奖了');
+            }
+            else {
+                alert('很遗憾您没有中奖');
+            }
+        }
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+        }
+        ul {
+            list-style: none;
+        }
+        .box {
+            width: 500px;
+            height: auto;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+            cursor: pointer;
+            padding: 30px 0;
+        }
+        textarea {
+            width: 350px;
+            height: 150px;
+            resize: none; /*防止用户拖动 右下角*/
+        }
+        ul > li {
+            width: 400px;
+            height: 30px;
+            border-borrom: 1px dashed #ccc;
+            margin-left: 50px;
+            border-bottom: 1px dashed #c0c0c0;
+            line-height: 30px;
+        }
+        ul > li > a{
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="box" id="box">
+    微博发布：<textarea name="" id="" cols="30" rows="10"></textarea>    <button>发布</button>
+
+</div>
+<script>
+    var box = document.getElementById("box");
+    var btn =document.getElementsByTagName("button")[0];//加[0]是因为数组不能直接被使用
+    var text = document.getElementsByTagName("textarea")[0];
+    var ul = document.createElement("ul");
+    box.appendChild(ul);
+    btn.onclick = function () {
+        if(text.value == ""){
+            return false;//终止函数执行
+        }
+        //创建li标签
+        var newli = document.createElement("li");
+        newli.innerHTML = text.value + "<a href='javascript:;'>删除</a>";
+        text.value = ''; //清空表单
+
+
+        var lis = ul.children; //获取li
+        //把新发表的内容添加到第一个li的上面
+        if(lis.length == 0){
+            ul.appendChild(newli);
+        }
+        else {
+            ul.insertBefore(newli,lis[0]);
+        }
+
+        var as = document.getElementsByTagName("a");  // 获得所 a
+        for(var i=0; i<as.length;i++)
+
+
+            var aa = document.getElementsByTagName("a");
+        for(var i=0; i< aa.length;i++){
+            aa[i].onclick = function () {
+                ul.removeChild(this.parentNode);
+            }
+        }
+    }
+
+
+
+
+</script>
+</body>
+</html>
